@@ -1,4 +1,3 @@
-import pdf from 'pdf-parse'
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter'
 import { config } from '../config/index.js'
 
@@ -11,6 +10,7 @@ export async function parseDocument(filename, buffer) {
     let text
 
     if (filename.endsWith('.pdf')) {
+        const pdf = (await import('pdf-parse')).default
         const data = await pdf(buffer)
         text = data.text
     } else {
