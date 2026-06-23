@@ -2,6 +2,7 @@ export const config = {
     port: process.env.PORT || 8000,
     ollama: {
         model: process.env.OLLAMA_MODEL || 'llama3',
+        embeddingModel: process.env.OLLAMA_EMBEDDING_MODEL || 'nomic-embed-text',
         baseUrl: process.env.OLLAMA_URL || 'http://localhost:11434',
     },
     chroma: {

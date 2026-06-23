@@ -9,6 +9,9 @@ export async function handleChat(req, res) {
         let vectorStore
         try {
             vectorStore = await getVectorStore()
+            if (!vectorStore.memoryVectors || vectorStore.memoryVectors.length === 0) {
+                return res.json({ answer: 'No documents uploaded yet. Please upload some docs first.' })
+            }
         } catch {
             return res.json({ answer: 'No documents uploaded yet. Please upload some docs first.' })
         }
